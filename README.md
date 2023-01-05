@@ -1,13 +1,17 @@
 <hr/>
 <hr/>
 
+<a name="readme-top"></a>
+
 # INDEPENDENT FUNDS MANAGER (IFM)
 
 <hr/>
 
 # SMART CONTRACT'S DESIGN PATTERN TO ENSURE YOUR FUNDS ARE USED IN THE WAY THEY PROMISED
 
-The code in this repo hasn't been tested yet but I think it already gives good idea of what it is. If further elaboration or development please mention me in your work. 😊
+The code in this repo hasn't been tested yet but I think it already gives good idea of what it is. If further elaboration or development please mention me in your work. 
+😉 https://github.com/CarlosAlegreUr 😉
+
 
 <hr>
 
@@ -21,13 +25,13 @@ In that business schema, how can your clients be sure that once they send funds 
 
 IFM contracts design pattern allows the client to be 100% sure those bad scenaios will never happen. If coded correctly of course. 😉
 
-[Click here to see real use cases](#😎-real-use-cases-😎)
-
 <hr/>
 
 ## 🤖 General usecase explanation 🤖
 
 IFM can be used to grant permission to any address or addresses on how and how much of some third party address' funds to spend in their smart contracts' functions.
+
+[Click here to see real use cases](#😎-real-use-cases-😎)
 
 <hr/>
 
@@ -52,6 +56,8 @@ After all that, the IFM contract always frozens your funds again and emits an ev
 
 Once deployed the IFM contract can't be modified by anyone.
 
+([back to top](#🙀-the-problem-🙀)) 
+
 <hr/>
 
 ## 💻 How to implement (as a developer) 🐱‍💻
@@ -69,6 +75,8 @@ Once deployed the IFM contract can't be modified by anyone.
 
 6. Implement the [OpenZeppelin](https://www.openzeppelin.com/) AccessControl for your team if you want. (you may need to add more callFunction() functions)
 
+([back to top](#🙀-the-problem-🙀)) 
+
 <hr/>
 
 ## Pros and cons of using IFM design
@@ -82,6 +90,8 @@ Once deployed the IFM contract can't be modified by anyone.
   - Client side: you pay gas fees unfrozing your funds and giving permissions.
   - Business side: More complex code, not super easy to implement.
 
+([back to top](#🙀-the-problem-🙀)) 
+
 <hr/>
 
 ## 🎉 FUTURE IMPROVEMENTS 🎉
@@ -89,7 +99,11 @@ Once deployed the IFM contract can't be modified by anyone.
 - Allow ERC20 tokens management.
 - Enable permission for multiple functions at the same time.
 
+([back to top](#🙀-the-problem-🙀)) 
+
 <hr>
+
+<a name="realcase"></a>
 
 ## 😎 Real use cases 😎
 
@@ -101,8 +115,20 @@ Once deployed the IFM contract can't be modified by anyone.
    call the \_setTokenURI() function in a contract and hope your funds will be used for that. Now you just have to
    send them to an IFM contract and grant access for that specific operation.
 
+([back to top](#🙀-the-problem-🙀)) 
+
 <hr>
+
+## Contact
+
+Carlos Alegre Urquizú - calegreu@gmail.com
+
+([back to top](#🙀-the-problem-🙀)) 
+
+<hr/>
 
 ## 📜 License 📜
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+([back to top](#🙀-the-problem-🙀)) 
