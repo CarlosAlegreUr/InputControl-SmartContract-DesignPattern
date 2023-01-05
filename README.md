@@ -100,6 +100,7 @@ Once deployed the IFM contract can't be modified by anyone.
 
 - Allow ERC20 tokens management.
 - Enable permission for multiple functions at the same time.
+- Use hashes to make sure backend calls function with values desired.
 
 ([back to top](#🙀-the-problem-🙀)) 
 
