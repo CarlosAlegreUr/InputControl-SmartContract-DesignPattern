@@ -12,6 +12,8 @@
 The code in this repo hasn't been tested yet but I think it already gives good idea of what it is. If further elaboration or development please mention me in your work. 
 😉 https://github.com/CarlosAlegreUr 😉
 
+(need to add extra mapping that maps function sgnatures to permission number... TODO)
+
 
 <hr>
 
@@ -50,7 +52,7 @@ setFrozen() && givePermission(). They will:
 1. Unfrozen your funds.
 2. Give permision for specific quantity of funds to be spend in a function.
 
-Then the "bakcend" code of the business will be able to call the IFM contrat that will call the contract where their services are and execute them. Only business addresses can call the rest of the functions in an IFM.
+Then the "bakcend" code of the business will be able to call the IFM contrat that will call the contract where their services are and execute them. Only business addresses can call the functions in an IFM. Except the 2 functions mentioned above that controll your own funds and it's state.
 
 After all that, the IFM contract always frozens your funds again and emits an event with useful information on how the transaction went.
 
