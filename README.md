@@ -11,27 +11,32 @@
 The code in this repo hasn't been tested or improved yet but I think it already gives good idea of what it is. If further elaboration or development please mention me in your work.
 😉 https://github.com/CarlosAlegreUr 😉
 
-<br/>
 <hr/>
-<br/>
 
 ## 🙀 A PROBLEM THAT SOLVES 🙀
 
 Imagine you have an NFT collection and you have to update a token URI due to some improvement to your
 client's NFT.
-😉
 
-<br/>
+Making the ""updateURI()"" function only callable by you will force your client to hope and trust that you will call it passing a correct URI.
+
+Using an InputControl you now can make that function
+external and let your client call the function with a 
+token URI he previously knows points to the correct
+data.
+
+And the client can't cheat either because InputControl
+uses hash values derived from the inputs' values to check
+if the input is what it was agreed to be.
+😊
+
 <hr/>
-<br/>
 
 ## 🤖 General usecase explanation 🤖
 
 InputControl can be used to control which inputs can some addresses send to your smart contracts functions.
 
-<br/>
 <hr/>
-<br/>
 
 ## ✨ How to use ✨
 
@@ -44,9 +49,7 @@ InputControl can be used to control which inputs can some addresses send to your
 
 ([back to top](#🙀-the-problem-🙀))
 
-<br/>
 <hr/>
-<br/>
 
 ## 🎉 FUTURE IMPROVEMENTS 🎉
 
