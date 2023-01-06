@@ -97,6 +97,8 @@ contract InputControl {
      * allowInputsFor() mixed with other useful contracts and
      * modifiers like Owner and AccessControl contracts of
      * OpenZeppelin.
+     *
+     * See param specifications in allowInputsFor() docs.
      */
     function callAllowInputsFor(
         address _client,
@@ -110,9 +112,17 @@ contract InputControl {
      * @dev Allows `_client` to call `_funcSignature` with `_validInputs`
      * `_validInputs.length` times with the value _validInputs[callNumber] in
      * each call.
-     * 
-     * @param _validInputs must be a hash value derived using the inputs the
-     * client is meant to have access to.
+     *
+     * @param _validInputs Each element must correspond to the equivalent of
+     * executing in solidity the next funtions with the values of the inputs:
+     * validInputUniqueIdentifier = keccak256(abi.encodePacked(input))
+     *
+     * @param _funcSignature should be a name you want to give to your function,
+     * could be any but for consistency I recommend to put the name of the funcion
+     * with its datatypes =>  _funcSignature = funcName(arg1, arg2, ...)
+     *
+     * Example: 
+     * For allowInputsFor() function => _funcSignature = "allowInputsFor(address, bytes32[], string)"
      */
     function allowInputsFor(
         address _client,
