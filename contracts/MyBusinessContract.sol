@@ -6,40 +6,37 @@ error MyBusinessContract__OnlyIFMCanCallThisContract();
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-import "./IndependentFundsManager.sol";
+import "./InputControl.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
 
 /**
- * @title Example of contract using IndependentFundsManager (IFM).
+ * @title Example of contract using InputControl.
  * @author Carlos Alegre Urquizú (GitHub --> https://github.com/CarlosAlegreUr)
  *
- * @dev To use IFM you must import it and declare the IFM contract as a variable in your storage.
- * Initialize it in de constructor.
- * And add the onlyIFM modifier to all function you want to control with it.
+ * @dev To use InputControl make your contract inherit InputControl and add the isAllowedInput()
+ * modifier in the functions you desire to control their inputs. Add to them an extra parameter,
+ * this parameter should be a 32 bytes hash representation of the other function allowed inputs
+ * given by the contract owner in some front-end back-end communication.
+ *
+ * @dev Additionally you can override callAllowInputsFor() if you please mixing this functionality with,
+ * for example, other useful ones like Owner or AccessControl contracts from OpenZeppelin.
  */
-contract MyBusinessContract {
-    address immutable i_ifmAddress;
-    IndependentFundsManager immutable i_independentFundsManager; // MUST ADD
+contract MyBusinessContract is InputControl, Ownable {
+    uint256 private s_incrediblyAmazingNumber;
 
-    uint256 private s_incrediblyAmazingNumber; // YOUR STUFF
-
-    // MUST ADD
-    constructor(address payable _independentFundsManagerAddress) {
-        i_ifmAddress = _independentFundsManagerAddress;
-        i_independentFundsManager = IndependentFundsManager(
-            _independentFundsManagerAddress
-        );
-    }
-
-    // MUST ADD
-    modifier onlyIFM() {
-        if (msg.sender != i_ifmAddress) {
-            revert MyBusinessContract__OnlyIFMCanCallThisContract();
-        }
-        _;
-    }
-
-    // YOUR STUFF + onlyIFM
-    function changeNumber(uint256 _newNumber) private onlyIFM {
+    function myFunc(
+        uint256 _newNumber,
+        bytes32 _input
+    ) external isAllowedInput("myFunc", msg.sender, _input) {
         s_incrediblyAmazingNumber = _newNumber;
+    }
+
+    function callAllowInputsFor(
+        address _client,
+        bytes32[] calldata _validInputs,
+        string calldata _funcSignature
+    ) public override onlyOwner {
+        allowInputsFor(_client, _validInputs, _funcSignature);
     }
 }
