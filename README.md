@@ -1,6 +1,13 @@
 <hr/>
 <hr/>
 
+# USELESS README, THIS DOESN'T RELATE TO THIS PROJECT ANYMORE, I WILL UPDATE IT TOMORROW OR THE NEXT DAY
+
+todo note: use abi.encode in function modifier for InputControl
+
+The code in this repo hasn't been tested yet but I think it already gives good idea of what it is. If further elaboration or development please mention me in your work. 
+😉 https://github.com/CarlosAlegreUr 😉
+
 <a name="readme-top"></a>
 
 # INDEPENDENT FUNDS MANAGER (IFM)

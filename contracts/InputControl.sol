@@ -110,6 +110,9 @@ contract InputControl {
      * @dev Allows `_client` to call `_funcSignature` with `_validInputs`
      * `_validInputs.length` times with the value _validInputs[callNumber] in
      * each call.
+     * 
+     * @param _validInputs must be a hash value derived using the inputs the
+     * client is meant to have access to.
      */
     function allowInputsFor(
         address _client,
