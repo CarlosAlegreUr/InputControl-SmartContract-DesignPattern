@@ -1,139 +1,70 @@
 <hr/>
 <hr/>
 
-# USELESS README, THIS DOESN'T RELATE TO THIS PROJECT ANYMORE, I WILL UPDATE IT TOMORROW OR THE NEXT DAY
-
-todo note: use abi.encode in function modifier for InputControl
-
-The code in this repo hasn't been tested yet but I think it already gives good idea of what it is. If further elaboration or development please mention me in your work. 
-😉 https://github.com/CarlosAlegreUr 😉
-
 <a name="readme-top"></a>
 
-# INDEPENDENT FUNDS MANAGER (IFM)
+# INPUT CONTROL CONTRACT
 
 <hr/>
 
-# SMART CONTRACT'S DESIGN PATTERN TO ENSURE YOUR FUNDS ARE USED IN THE WAY THEY PROMISED
-
-The code in this repo hasn't been tested yet but I think it already gives good idea of what it is. If further elaboration or development please mention me in your work. 
+# ENSURES YOUR FUNCTIONS ARE ONLY CALLED WITH CERTAIN VALUES AS INPUTS DEPENDING ON THE CALLER
+The code in this repo hasn't been tested or improved yet but I think it already gives good idea of what it is. If further elaboration or development please mention me in your work.
 😉 https://github.com/CarlosAlegreUr 😉
 
-(need to add extra mapping that maps function sgnatures to permission number... TODO)
-
-
-<hr>
-
-## 🙀 THE PROBLEM 🙀
-
-Imagine you have a service programmed in some smart contracts. It's designed in such a way that only you and your team have the addresses with access to certain functions.
-
-Now imagine that those contract functions are meant to be used by, or manage; some clients' funds.
-
-In that business schema, how can your clients be sure that once they send funds to any address that can call those functions, those funds will actually be used for calling the functions? How can they be sure you will never take any of the funds, run away with them or use them in any different way?
-
-IFM contracts design pattern allows the client to be 100% sure those bad scenaios will never happen. If coded correctly of course. 😉
-
+<br/>
 <hr/>
+<br/>
+
+## 🙀 A PROBLEM THAT SOLVES 🙀
+
+Imagine you have an NFT collection and you have to update a token URI due to some improvement to your
+client's NFT.
+😉
+
+<br/>
+<hr/>
+<br/>
 
 ## 🤖 General usecase explanation 🤖
 
-IFM can be used to grant permission to any address or addresses on how and how much of some third party address' funds to spend in their smart contracts' functions.
+InputControl can be used to control which inputs can some addresses send to your smart contracts functions.
 
-[Click here to see real use cases](#😎-real-use-cases-😎)
-
+<br/>
 <hr/>
+<br/>
 
-## ✨ How it works (how to use as a client) ✨
+## ✨ How to use ✨
 
-- You send your funds to an IFM. (can be withdrawn at any time only by you)
+1. To use InputControl make your contract inherit InputControl and add the isAllowedInput()
+   modifier in the functions you desire to control their inputs. The '\_input' parameter of the
+   modifier must be = keccak256(abi.encodePacked(inputs)).
 
-Inside the contract your funds have 2 properties only you can modify:
+2. Additionally you can override callAllowInputsFor() if you please mixing this functionality with,
+   for example, other useful ones like Owner or AccessControl contracts from OpenZeppelin.
 
-- Frozen or not.
-- Quantity allowed to spend in a function.
+([back to top](#🙀-the-problem-🙀))
 
-To allow the use of your funds you call 2 functions:
-setFrozen() && givePermission(). They will:
-
-1. Unfrozen your funds.
-2. Give permision for specific quantity of funds to be spend in a function.
-
-Then the "bakcend" code of the business will be able to call the IFM contrat that will call the contract where their services are and execute them. Only business addresses can call the functions in an IFM. Except the 2 functions mentioned above that controll your own funds and it's state.
-
-After all that, the IFM contract always frozens your funds again and emits an event with useful information on how the transaction went.
-
-Once deployed the IFM contract can't be modified by anyone.
-
-([back to top](#🙀-the-problem-🙀)) 
-
+<br/>
 <hr/>
-
-## 💻 How to implement (as a developer) 🐱‍💻
-
-1. You must import the IFM contract and declare it as a variable in your contracts' storages.
-
-2. Initialize the variable in the constructor.
-
-3. And add the onlyIFM modifier to all functions you want to control with it.
-
-4. In the IFM code, add the enums needed according to how many functions you need.
-
-5. Add extra parameters to the
-   IFM\_\_UsefulInfoInFunctionCall() event if you need.
-
-6. Implement the [OpenZeppelin](https://www.openzeppelin.com/) AccessControl for your team if you want. (you may need to add more callFunction() functions)
-
-([back to top](#🙀-the-problem-🙀)) 
-
-<hr/>
-
-## Pros and cons of using IFM design
-
-- PROS
-
-  - Client side: guarantees no corrupted used of your funds.
-  - Business side: you gain client's confidence.
-
-- CONS
-  - Client side: you pay gas fees unfrozing your funds and giving permissions.
-  - Business side: More complex code, not super easy to implement.
-
-([back to top](#🙀-the-problem-🙀)) 
-
-<hr/>
+<br/>
 
 ## 🎉 FUTURE IMPROVEMENTS 🎉
 
-- Allow ERC20 tokens management.
-- Enable permission for multiple functions at the same time.
-- Use hashes to make sure backend calls function with values desired.
+* Test the code. 
+* Improve data types and structure.
+* Add deployment script and example of use script.
 
-([back to top](#🙀-the-problem-🙀)) 
+([back to top](#🙀-the-problem-🙀))
 
-<hr>
+<hr/>
 
 <a name="realcase"></a>
-
-## 😎 Real use cases 😎
-
-1. Imagine a smart contract based bank services business. They can apply IFM to their contracts
-   in order to be able to use your funds when executing their services but only if you agreed on using them for that specific function and with a specific quaintity. Maybe taking a loan or whatever financial action you want to carry out.
-
-2. Imagine an NFT collection that needs to change their token URIs in order to reward a costumer (for any reason)
-   with an increase of rarity on their NFT. You as a client may send the funds that cost to the address that can
-   call the \_setTokenURI() function in a contract and hope your funds will be used for that. Now you just have to
-   send them to an IFM contract and grant access for that specific operation.
-
-([back to top](#🙀-the-problem-🙀)) 
-
-<hr>
 
 ## Contact
 
 Carlos Alegre Urquizú - calegreu@gmail.com
 
-([back to top](#🙀-the-problem-🙀)) 
+([back to top](#🙀-the-problem-🙀))
 
 <hr/>
 
@@ -141,4 +72,4 @@ Carlos Alegre Urquizú - calegreu@gmail.com
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-([back to top](#🙀-the-problem-🙀)) 
+([back to top](#🙀-the-problem-🙀))
