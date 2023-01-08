@@ -139,20 +139,6 @@ contract InputControl {
         s_funcSignatureToAllowedInputSequence[_funcSignature][_client]
             .inputs = _validInputs;
 
-        console.log("-------------------------------");
-        console.log("SAVING THIS VALUE:");
-        console.log(
-            "%s",
-            s_funcSignatureToAllowedInputSequence[_funcSignature][_client]
-                .numOfCalls
-        );
-        console.log("-------------------------------");
-
-        console.log("-------------------------------");
-        console.log("CLIENT ALLOWED:");
-        console.log("%s", _client);
-        console.log("-------------------------------");
-
         emit InputControl__AllowedInputsGranted(
             _client,
             _funcSignature,

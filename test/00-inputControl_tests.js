@@ -128,7 +128,7 @@ describe("InputControl.sol tests", function () {
         "InputControl__NotAllowedInput"
       );
 
-      await inputControlContract.callAllowInputsFor(
+      await useCaseContract.callAllowInputsFor(
         client1,
         [validInputs, validInputs2],
         "myFunc(uint256, address)"
