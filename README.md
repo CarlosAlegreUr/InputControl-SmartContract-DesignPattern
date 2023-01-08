@@ -53,9 +53,10 @@ InputControl can be used to control which inputs can some addresses send to your
 
 ## 🎉 FUTURE IMPROVEMENTS 🎉
 
-* Test the code. 
+* Improve and review code's tests. 
 * Improve data types and structure.
 * Add deployment script and example of use script.
+* Improve README and documentation.
 
 ([back to top](#🙀-the-problem-🙀))
 
