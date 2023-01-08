@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-error MyBusinessContract__OnlyIFMCanCallThisContract();
+error UseCaseContract__OnlyIFMCanCallThisContract();
 
 // Uncomment this line to use console.log
-// import "hardhat/console.sol";
+import "hardhat/console.sol";
 
 import "./InputControl.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -21,14 +21,21 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
  * @dev Additionally you can override callAllowInputsFor() if you please mixing this functionality with,
  * for example, other useful ones like Owner or AccessControl contracts from OpenZeppelin.
  */
-contract MyBusinessContract is InputControl, Ownable {
+contract UseCaseContract is InputControl, Ownable {
     uint256 private s_incrediblyAmazingNumber;
     address private s_someAddress;
 
     function myFunc(
         uint256 _newNumber,
         address _anAddress
-    ) external isAllowedInput("myFunc", msg.sender, keccak256(abi.encodePacked(_newNumber, _anAddress))) {
+    )
+        external
+        isAllowedInput(
+            "myFunc(uint256, address)",
+            msg.sender,
+            keccak256(abi.encodePacked(_newNumber, _anAddress))
+        )
+    {
         s_incrediblyAmazingNumber = _newNumber;
         s_someAddress = _anAddress;
     }
@@ -39,5 +46,9 @@ contract MyBusinessContract is InputControl, Ownable {
         string calldata _funcSignature
     ) public override onlyOwner {
         allowInputsFor(_client, _validInputs, _funcSignature);
+    }
+
+    function getNumber() public view returns (uint256) {
+        return s_incrediblyAmazingNumber;
     }
 }

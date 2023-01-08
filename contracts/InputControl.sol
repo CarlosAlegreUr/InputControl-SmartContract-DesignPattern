@@ -5,7 +5,7 @@ pragma solidity ^0.8.9;
 error InputControl__NotAllowedInput();
 
 // Uncomment this line to use console.log
-// import "hardhat/console.sol";
+import "hardhat/console.sol";
 
 /**
  * @title Input Control.
@@ -56,18 +56,21 @@ contract InputControl {
         inputSequence memory seq = s_funcSignatureToAllowedInputSequence[
             _funcSig
         ][_clientAddress];
+        if (seq.numOfCalls != 0) {
+            if (seq.inputs[seq.actualCall] != _input) {
+                revert InputControl__NotAllowedInput();
+            }
 
-        if (seq.inputs[seq.actualCall] != _input) {
-            revert InputControl__NotAllowedInput();
-        }
-
-        if ((seq.actualCall + 1) == seq.numOfCalls) {
-            delete s_funcSignatureToAllowedInputSequence[_funcSig][
-                _clientAddress
-            ];
+            if ((seq.actualCall + 1) == seq.numOfCalls) {
+                delete s_funcSignatureToAllowedInputSequence[_funcSig][
+                    _clientAddress
+                ];
+            } else {
+                s_funcSignatureToAllowedInputSequence[_funcSig][_clientAddress]
+                    .actualCall += 1;
+            }
         } else {
-            s_funcSignatureToAllowedInputSequence[_funcSig][_clientAddress]
-                .actualCall += 1;
+            revert InputControl__NotAllowedInput();
         }
         _;
     }
@@ -121,7 +124,7 @@ contract InputControl {
      * could be any but for consistency I recommend to put the name of the funcion
      * with its datatypes =>  _funcSignature = funcName(arg1, arg2, ...)
      *
-     * Example: 
+     * Example:
      * For allowInputsFor() function => _funcSignature = "allowInputsFor(address, bytes32[], string)"
      */
     function allowInputsFor(
@@ -135,6 +138,20 @@ contract InputControl {
             .actualCall = 0;
         s_funcSignatureToAllowedInputSequence[_funcSignature][_client]
             .inputs = _validInputs;
+
+        console.log("-------------------------------");
+        console.log("SAVING THIS VALUE:");
+        console.log(
+            "%s",
+            s_funcSignatureToAllowedInputSequence[_funcSignature][_client]
+                .numOfCalls
+        );
+        console.log("-------------------------------");
+
+        console.log("-------------------------------");
+        console.log("CLIENT ALLOWED:");
+        console.log("%s", _client);
+        console.log("-------------------------------");
 
         emit InputControl__AllowedInputsGranted(
             _client,
