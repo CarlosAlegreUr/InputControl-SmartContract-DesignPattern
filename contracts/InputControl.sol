@@ -5,7 +5,7 @@ pragma solidity ^0.8.9;
 error InputControl__NotAllowedInput();
 
 // Uncomment this line to use console.log
-import "hardhat/console.sol";
+// import "hardhat/console.sol";
 
 /**
  * @title Input Control.
@@ -14,13 +14,9 @@ import "hardhat/console.sol";
  * @notice InputControl can be used to control which inputs can some addresses send to
  * your smart contracts functions.
  *
- * @dev To use it make your contract inherit InputControl contract and add the isAllowedInput()
- * modifier in the functions you desire to control their inputs. Add to them an extra parameter,
- * this parameter should be a 32 bytes hash given by the contract owner in some front-end back-end
- * communication.
- *
- * @dev Additionally you can override callAllowInputsFor() if you please mixing this functionality with,
- * for example, other useful ones like Owner or AccessControl contracts from OpenZeppelin.
+ * @dev Check how to use it in your contracts at the UseCaseContract on the github repo: 
+ * https://github.com/CarlosAlegreUr/InputControl-SmartContract-DesignPattern/blob/main/contracts/UseCaseContract.sol
+ * 
  */
 contract InputControl {
     /* Types */
@@ -82,7 +78,7 @@ contract InputControl {
 
     /**
      * @return Allowed inputs from `_address` when calling `_funcSignature`. Index of inputs
-     * on the inputs array shows in which time calling `_funcSignature` that input can be used.
+     * on the inputs array shows in which order when calling `_funcSignature` that input can be used.
      */
     function getAllowedInputs(
         string memory _funcSignature,
@@ -121,8 +117,8 @@ contract InputControl {
      * validInputUniqueIdentifier = keccak256(abi.encodePacked(input))
      *
      * @param _funcSignature should be a name you want to give to your function,
-     * could be any but for consistency I recommend to put the name of the funcion
-     * with its datatypes =>  _funcSignature = funcName(arg1, arg2, ...)
+     * could be any but for consistency I recommend putting the name of the function
+     * with it's datatypes =>  _funcSignature = funcName(arg1, arg2, ...)
      *
      * Example:
      * For allowInputsFor() function => _funcSignature = "allowInputsFor(address, bytes32[], string)"

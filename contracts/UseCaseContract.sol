@@ -4,7 +4,7 @@ pragma solidity ^0.8.9;
 error UseCaseContract__OnlyIFMCanCallThisContract();
 
 // Uncomment this line to use console.log
-import "hardhat/console.sol";
+// import "hardhat/console.sol";
 
 import "./InputControl.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -25,22 +25,24 @@ contract UseCaseContract is InputControl, Ownable {
     uint256 private s_incrediblyAmazingNumber;
     address private s_someAddress;
 
-    function myFunc(
+    function myFunc( // Any function in your own smart contract.
         uint256 _newNumber,
         address _anAddress
     )
         external
-        isAllowedInput(
-            "myFunc(uint256, address)",
-            msg.sender,
-            keccak256(abi.encodePacked(_newNumber, _anAddress))
+        isAllowedInput( // <--- Look here!
+            "myFunc(uint256, address)", // <--- Look here!
+            msg.sender, // <--- Look here!
+            keccak256(abi.encodePacked(_newNumber, _anAddress)) // <--- Look here!
         )
     {
         s_incrediblyAmazingNumber = _newNumber;
         s_someAddress = _anAddress;
     }
 
-    function callAllowInputsFor(
+    // Overriding function and using OnlyOwner, now only owner(in this case owner = deployer address) 
+    // of this contract can control inputs' control. 
+    function callAllowInputsFor( // <--- Look here!
         address _client,
         bytes32[] calldata _validInputs,
         string calldata _funcSignature
