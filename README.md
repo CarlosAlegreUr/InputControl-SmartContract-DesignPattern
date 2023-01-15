@@ -3,13 +3,19 @@
 
 <a name="readme-top"></a>
 
-# INPUT CONTROL CONTRACT
+# InputControl Contract
 
 <hr/>
 
-# ENSURES YOUR FUNCTIONS ARE ONLY CALLED WITH CERTAIN VALUES AS INPUTS DEPENDING ON THE CALLER
+# Ensures your functions are only called with certain values as inputs depending on the caller
 
-The code in this repo has only been tested in the hardhat local network during 2 afternoons. Should work though.
+## 💽Testing and implementation example repo => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing) 💽
+
+<hr/>
+
+The code in this repo has only been tested in the hardhat local network during 2 afternoons. Should work though. 
+
+Testing and simple implementation repo => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing)
 
 If further elaboration or development please mention me in your work.
 
@@ -42,7 +48,7 @@ InputControl can be used to control which inputs can some addresses send to your
 
 Furthermore you can allow your user to call a function with a defined inputs sequence.
 
-Example: You want your client to call a function 3 times, first time with input value = 1, second value = 2 and third time value = 3. Input control can control that the desired values are used in the desired order.
+Example: You want your client only to call a function 3 times, first time with input value = 1, second value = 2 and third time value = 3. Input control can control that the desired values are used in the desired order.
 
 <hr/>
 
