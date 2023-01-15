@@ -63,12 +63,6 @@ contract InputControl {
      * @dev Checks if `_client` can call `_funcSignature` with `_input`.
      * If `_client` has used all it's calls, this modifier resets the
      * inputSequence or inputUnordered for a `_client` in a `_funcSignature`.
-     *
-     * @dev Maybe the input has a keccak256(abi.encodePacked(input)) == the empty
-     * value for bytes32 in solidity. This is the value that InputControl uses to
-     * know if an input in an inputUnordered has been used, so in the unlikely but
-     * posible case of collision; the input used by client and business for `_funcSig`
-     * should be slightly changed.
      */
     modifier isAllowedInput(
         string memory _funcSig,
@@ -102,33 +96,26 @@ contract InputControl {
                 _funcSig
             ][_clientAddress];
             if (spec.numOfCalls != 0) {
-                if (
-                    _input ==
-                    0x0000000000000000000000000000000000000000000000000000000000000000
-                ) {
-                    revert InputControl_HashCollisionWith0Value();
-                } else {
-                    uint256 i = 0;
-                    bool found = false;
-                    while (!found && i < spec.inputs.length) {
-                        if (spec.inputs[i] == _input) {
+                uint256 i = 0;
+                bool found = false;
+                while (!found && i < spec.inputs.length) {
+                    if (spec.inputs[i] == _input) {
+                        delete s_funcSignatureToAllowedinputUnordered[_funcSig][
+                            _clientAddress
+                        ].inputs[i];
+                        spec.numOfCalls -= 1;
+                        found = true;
+                        if (spec.numOfCalls == 0) {
                             delete s_funcSignatureToAllowedinputUnordered[
                                 _funcSig
-                            ][_clientAddress].inputs[i];
-                            spec.numOfCalls -= 1;
-                            found = true;
-                            if (spec.numOfCalls == 0) {
-                                delete s_funcSignatureToAllowedinputUnordered[
-                                    _funcSig
-                                ][_clientAddress];
-                            }
-                        } else {
-                            i += 1;
+                            ][_clientAddress];
                         }
+                    } else {
+                        i += 1;
                     }
-                    if (!found) {
-                        revert InputControl__NotAllowedInput();
-                    }
+                }
+                if (!found) {
+                    revert InputControl__NotAllowedInput();
                 }
             } else {
                 revert InputControl__NotAllowedInput();
@@ -186,10 +173,15 @@ contract InputControl {
     /**
      * @dev Allows `_client` to call `_funcSignature` with `_validInputs`
      * values.
-     *
+     * 
      * @param _validInputs Each element must correspond to the equivalent of
      * executing in solidity the following funtions with inputs' values:
      * validInputUniqueIdentifier = keccak256(abi.encodePacked(input))
+     * 
+     * @dev Maybe an input has a keccak256(abi.encodePacked(input)) == the empty
+     * value for bytes32 in solidity. This is the value that InputControl uses to
+     * know if an input in the inputUnordered structure has been used, so in the unlikely but
+     * posible case of "collision"; the input used for `_funcSig` should be slightly changed.
      *
      * @param _funcSignature should be a name you want to give to your function,
      * could be any but for consistency I recommend putting the name of the function
@@ -216,6 +208,14 @@ contract InputControl {
             s_funcSignatureToAllowedInputSequence[_funcSignature][_client]
                 .inputs = _validInputs;
         } else {
+            for (uint256 i = 0; i < _validInputs.length; i++) {
+                if (
+                    _validInputs[i] ==
+                    0x0000000000000000000000000000000000000000000000000000000000000000
+                ) {
+                    revert InputControl_HashCollisionWith0Value();
+                }
+            }
             s_funcSignatureToAllowedinputUnordered[_funcSignature][_client]
                 .numOfCalls = _validInputs.length;
             s_funcSignatureToAllowedinputUnordered[_funcSignature][_client]
