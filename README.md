@@ -48,7 +48,7 @@ InputControl can be used to control which inputs can some addresses send to your
 
 Furthermore you can allow your user to call a function with a defined inputs sequence.
 
-Example: You want your client to call a function 3 times, first time with input value = 1, second value = 2 and third time value = 3. Input control can control that the desired values are used in the desired order.
+Example: You want your client only to call a function 3 times, first time with input value = 1, second value = 2 and third time value = 3. Input control can control that the desired values are used in the desired order.
 
 <hr/>
 
