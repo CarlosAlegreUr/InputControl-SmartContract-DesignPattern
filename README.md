@@ -3,13 +3,19 @@
 
 <a name="readme-top"></a>
 
-# INPUT CONTROL CONTRACT
+# InputControl Contract
 
 <hr/>
 
-# ENSURES YOUR FUNCTIONS ARE ONLY CALLED WITH CERTAIN VALUES AS INPUTS DEPENDING ON THE CALLER
+# Ensures your functions are only called with certain values as inputs depending on the caller
 
-The code in this repo has only been tested in the hardhat local network during 2 afternoons. Should work though.
+## 💽Testing and implementation example repo => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing) 💽
+
+<hr/>
+
+The code in this repo has only been tested in the hardhat local network during 2 afternoons. Should work though. 
+
+Testing and simple implementation repo => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing)
 
 If further elaboration or development please mention me in your work.
 
