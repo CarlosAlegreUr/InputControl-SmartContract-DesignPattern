@@ -61,7 +61,7 @@ Example: You want your client to call a function 3 times, first time with input 
 2. Additionally you can override callAllowInputsFor() if you please mixing this functionality with,
    for example, other useful ones like Owner or AccessControl contracts from [OpenZeppelin](https://docs.openzeppelin.com/contracts/4.x/access-control).
 
-Check a simple implemented example at [UseCaseContract.sol](https://github.com/CarlosAlegreUr/InputControl-SmartContract-DesignPattern/blob/main/contracts/UseCaseContract.sol).
+Check a simple implemented example at [UseCaseContract.sol](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing/blob/main/contracts/UseCaseContract.sol).
 
 <hr/>
 
@@ -97,5 +97,3 @@ Buy me a crypto coffe in ETH, MATIC or BNB ☕🧐☕
 ## 📜 License 📜
 
 Distributed under the MIT License. See [LICENSE](https://github.com/CarlosAlegreUr/InputControl-SmartContract-DesignPattern/blob/main/LICENSE) in the repository for more information.
-
-([back to top](#🙀-the-problem-🙀))

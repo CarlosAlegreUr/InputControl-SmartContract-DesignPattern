@@ -17,7 +17,7 @@ error InputControl_HashCollisionWith0Value();
  * in multiple calls to the same function, it's also handeled by InputControl.
  *
  * @dev Check an example of use on a contract at UseCaseContract.sol on the github repo:
- * https://github.com/CarlosAlegreUr/InputControl-SmartContract-DesignPattern/blob/main/contracts/UseCaseContract.sol
+ * https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing/blob/main/contracts/UseCaseContract.sol
  *
  */
 contract InputControl {
