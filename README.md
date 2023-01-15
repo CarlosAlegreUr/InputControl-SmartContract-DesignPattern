@@ -24,7 +24,7 @@ client's NFT.
 
 Making the ""updateURI()"" function only callable by you will force your client to hope and trust that you will call it passing a correct URI.
 
-Using InputControl now yous can make that function
+Using InputControl now you can make that function
 external and let your client call the function with a
 token URI he previously knows points to the correct
 data.
@@ -38,9 +38,9 @@ if the input is what it was agreed to be.
 
 ## 🤖 General usecase explanation 🤖
 
-InputControl can be used to control which inputs can some addresses send to your smart contracts functions.
+InputControl can be used to control which inputs can some addresses send to your smart contracts' functions.
 
-Furthermore you can allow your user to call a function with a defined inputs' order.
+Furthermore you can allow your user to call a function with a defined inputs sequence.
 
 Example: You want your client to call a function 3 times, first time with input value = 1, second value = 2 and third time value = 3. Input control can control that the desired values are used in the desired order.
 
@@ -55,7 +55,7 @@ Example: You want your client to call a function 3 times, first time with input 
 2. Additionally you can override callAllowInputsFor() if you please mixing this functionality with,
    for example, other useful ones like Owner or AccessControl contracts from [OpenZeppelin](https://docs.openzeppelin.com/contracts/4.x/access-control).
 
-Check a simple implemented example guide at [UseCaseContract.sol](https://github.com/CarlosAlegreUr/InputControl-SmartContract-DesignPattern/blob/main/contracts/UseCaseContract.sol).
+Check a simple implemented example at [UseCaseContract.sol](https://github.com/CarlosAlegreUr/InputControl-SmartContract-DesignPattern/blob/main/contracts/UseCaseContract.sol).
 
 <hr/>
 
