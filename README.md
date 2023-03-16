@@ -13,7 +13,7 @@
 
 <hr/>
 
-The code in this repo has only been tested in the hardhat local network during 2 afternoons. Should work though. 
+The code in this repo has only been tested in the hardhat local network during 2 afternoons. Should work though.
 
 Testing and simple implementation repo => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing)
 
@@ -67,14 +67,13 @@ Check a simple implemented example at [UseCaseContract.sol](https://github.com/C
 
 ## 🎉 FUTURE IMPROVEMENTS 🎉
 
-- Improve and review code's tests.
+- Improve and review (static analysis, audit...) code's tests.
 - Test in testnet.
-- Check for improvements on data types and structure.
+- Check for improvements on data types and structure (hash maps instead of array in unordered inputs would be an improvement).
 - New functionality: control different functions call order.
 - Make a function's inputs control easily interchangeable between
-sequence inputs or unordered inputs.
-- Better handeling of posible hash collision with 0 value.
-- Ponder if use of hash maps in unordered inputs would be an improvement. 
+  sequence inputs or unordered inputs.
+- Better handeling of posible collision of hashed input with 0 value.
 
 <hr/>
 
@@ -92,7 +91,6 @@ Buy me a crypto coffe in ETH, MATIC or BNB ☕🧐☕
 (or tokens if you please :p )
 
 0x2365bf29236757bcfD141Fdb5C9318183716d866
-
 
 <hr/>
 
