@@ -11,9 +11,9 @@
 
 ## 💽Testing and implementation example repo => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing) 💽
 
-<hr/>
+## 💽NPM repo => [(click)](https://www.npmjs.com/package/input-control-contract) 💽
 
-Testing and simple implementation repo => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing)
+<hr/>
 
 If further elaboration or development please mention me in your work.
 
