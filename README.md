@@ -71,8 +71,10 @@ Check a simple implemented example at [UseCaseContract.sol](https://github.com/C
 - Test in testnet.
 - Check for improvements on data types and structure.
 - New functionality: control different functions call order.
-- Make a function's inputs control interchangeable between
+- Make a function's inputs control easily interchangeable between
 sequence inputs or unordered inputs.
+- Better handeling of posible hash collision with 0 value.
+- Ponder if use of hash maps in unordered inputs would be an improvement. 
 
 <hr/>
 
