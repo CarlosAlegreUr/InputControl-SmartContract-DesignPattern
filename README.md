@@ -13,8 +13,6 @@
 
 <hr/>
 
-The code in this repo has only been tested in the hardhat local network during 2 afternoons. Should work though.
-
 Testing and simple implementation repo => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing)
 
 If further elaboration or development please mention me in your work.
