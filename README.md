@@ -63,12 +63,15 @@ Check a simple implemented example at [UseCaseContract.sol](https://github.com/C
 
 <hr/>
 
+## 📰 Last Changes 📰
+
+- Now unorderedInput struct uses mappings instead of an array to control the inputs. Improved from O(n) to O(1) checking time, furthermore is more gas efficient.
+
 ## 🎉 FUTURE IMPROVEMENTS 🎉
 
 - Improve and review (static analysis, audit...) code's tests.
 - Test in testnet.
-- Check for improvements on data types and structure (hash maps instead of array in unordered inputs would be an improvement).
-- New functionality: control different functions call order.
+- Check gas implications of changing function signatures to bytes type instead of string.
 - Make a function's inputs control easily interchangeable between
   sequence inputs or unordered inputs.
 - Better handeling of posible collision of hashed input with 0 value.
