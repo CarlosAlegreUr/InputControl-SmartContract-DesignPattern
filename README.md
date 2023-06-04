@@ -7,7 +7,7 @@
 
 <hr/>
 
-# Ensures your functions are only called with certain values as inputs depending on the caller
+# Ensures your functions are only called with specific inputs' values for each caller
 
 ## 💽Testing and implementation example repo => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing) 💽
 
@@ -55,6 +55,15 @@ Example: You want your client only to call a function 3 times, first time with i
 1. To use InputControl make your contract inherit InputControl and add the isAllowedInput()
    modifier in the functions you desire to control their inputs. The '\_input' parameter of the
    modifier must be = keccak256(abi.encode(inputs)).
+   The parameters of the modifier must be:
+
+   1.1 The Function Selector => bytes4(keccak256(bytes("funcSignatureAsString")))
+
+   1.2 The caller => msg.sender
+
+   1.3 The unique identifier of the input => keccak256(abi.encode(inputs))
+   Notice! You must not use abi.encodePacked() because it can give the same output for different inputs
+   and the identifier would stop being unique.
 
 2. Additionally you can override callAllowInputsFor() if you please mixing this functionality with,
    for example, other useful ones like Owner or AccessControl contracts from [OpenZeppelin](https://docs.openzeppelin.com/contracts/4.x/access-control).
@@ -65,18 +74,19 @@ Check a simple implemented example at [UseCaseContract.sol](https://github.com/C
 
 ## 📰 Last Changes 📰
 
-- abi.encodePacked() was fatal error! Same inputs might have the same encoded value. Now using abi.encode().
-- Now you can decide wheter a function allows inputs in ordered or unordered manner even after deployment.
-- Handle collision with 0 value not needed: now map to bool indicates if input has already been used.
-- Better memory management when unordered inputs used.
-- Function selectors now are bytes4 instead of strings, like actual func selectors in ETH.
-- Shortened variable names in code.
-- Tests improved.
+- Fixed bug, inputToTimesToUse mapping now is overwritten correctly. In previous version it could overflow and/or lead to unexpected behaviours.
+
+- Added getIsSequence() function.
+- Deleted argument \_isSequence ins getAllowedInputs().
+- New tests in tests' repository.
 
 ## 🎉 FUTURE IMPROVEMENTS 🎉
 
-- Improve and review (static analysis, audit...) code's tests.
+- Improve and review code and tests. (static analysis, audit...)
+
 - Test in testnet.
+- Create modifier locker. Make it more flexible and be able to activate or deactivate InputControl in your functions.
+- Check if worth it to create better option: adding more allowed inputs to client who hasn't used all of them. Now it overwrites.
 - Check gas implications of changing 4 bytes function selector to 32 bytes hashed function signatures.
 
 <hr/>
