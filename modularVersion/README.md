@@ -20,4 +20,4 @@ I think this option is better because it makes InputControlModular decoupled fro
 so to better implement in a decoupled way AccessControl or Ownable from OpenZeppelin wiht InputControlModular check
 the UseCaseContract link just down below:
 
-[UseCaseContractModular.sol](https://github.com/CarlosAlegreUr/InputControl-SmartContract-DesignPattern/blob/main/contracts/modularVersion/UseCaseContractModular.sol)
+[UseCaseContractModular.sol]([https://github.com/CarlosAlegreUr/InputControl-SmartContract-DesignPattern/blob/main/contracts/modularVersion/UseCaseContractModular.sol](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing/blob/main/contracts/modularVersion/UseCaseContractModular.sol))
