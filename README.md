@@ -74,10 +74,10 @@ Check a simple implemented example at [UseCaseContract.sol](https://github.com/C
 
 ## 📰 Last Changes 📰
 
+- Added new modular/interface implementation. In some codes inheriting InputControl could make the contract too big to be deployed. Inheriting implementation still available in the package though :D.
+
 - Fixed bug, inputToTimesToUse mapping now is overwritten correctly. In previous version it could overflow and/or lead to unexpected behaviours.
 
-- Added getIsSequence() function.
-- Deleted argument \_isSequence ins getAllowedInputs().
 - New tests in tests' repository.
 
 ## 🎉 FUTURE IMPROVEMENTS 🎉
