@@ -7,10 +7,9 @@ pragma solidity ^0.8.18;
  * @notice This interface defines a system for controlling the sequence and set of inputs
  * addresses can send to a contract's functions. It allows total control on function call input values.
  *
- * @dev For an interface implementation, refer to the contract InputControlPublic.sol:
- * (TODO: add link)
+ * @dev For an interface implementation, refer to the contract InputControlPublic.sol in this same directory.
  * @dev For a use-case example, refer to the contract UseCaseContractGlobal.sol:
- * (TODO: add link)
+ * [link](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing/blob/main/contracts/public/UseCaseContractPublic.sol)
  */
 interface IInputControlPublic {
     /* Customed Errors */
