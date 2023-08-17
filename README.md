@@ -3,54 +3,79 @@
 
 <a name="readme-top"></a>
 
-# InputControl Contract
+# 📜 InputControl Contract 📜
 
 <hr/>
 
 # Ensures your functions are only called with specific inputs' values for each caller
 
-## 💽Testing and implementation example repo => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing) 💽
+## 💽Testing repo with implementation examples => [(click)](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing) 💽
 
 ## 💽NPM repo => [(click)](https://www.npmjs.com/package/input-control-contract) 💽
 
 <hr/>
 
-If further elaboration or development please mention me in your work.
+## Index 📌
 
-😉 https://github.com/CarlosAlegreUr 😉
-
-<hr/>
-
-## 🙀 A PROBLEM THAT SOLVES 🙀
-
-Imagine you have an NFT collection and you have to update a token URI due to some improvement for your
-client's NFT.
-
-Making the ""updateURI()"" function only callable by you will force your client to hope and trust that you will call it passing a correct URI.
-
-Using InputControl now you can make that function
-external and let your client call the function with a
-token URI he previously knows points to the correct
-data.
-
-And the client can't cheat either. This is because InputControl
-uses hash values derived from the inputs' values to check
-if the input is what it was agreed to be.
-😊
+- [General usecase explanation 🤖](#general-usecase-explanation)
+- [PROBLEMS THAT SOLVE 🙀](#a-problem-that-solves)
+- [How to use ✨](#how-to-use)
+- [Last Changes 📰](#last-changes)
+- [FUTURE IMPROVEMENTS 🎉](#future-improvements)
+- [Contributing 💻](#contributing)
+- [Contact 📨](#contact)
+- [Buy me a CryptoCoffee ☕](#buy-me-a-cryptocoffee)
+- [License MIT 📜](#license)
 
 <hr/>
 
-## 🤖 General usecase explanation 🤖
+<a name="a-problem-that-solves"></a>
 
-InputControl can be used to control which inputs can some addresses send to your smart contracts' functions.
+## 🤖 General Usecase Explanation 🤖
 
-Furthermore you can allow your user to call a function with a defined inputs sequence.
+**InputControl** offers a dynamic way to manage the inputs that specific addresses can send to your smart contracts' functions. This tool is not only restricted to ordered sequences. Inputs can also be set in a way that allows them to be called in any unordered fashion, adding flexibility to the contract interactions.
 
-Example: You want your client only to call a function 3 times, first time with input value = 1, second value = 2 and third time value = 3. Input control can handle that the desired values are used in the desired order.
+Notably, it empowers you to dictate a sequence for your users when calling functions.
 
-<hr/>
+**Example**: Imagine you want a user to invoke a function thrice—first with an input value of 1, next with 2, and finally, 3. InputControl ensures these values are used in the specified sequence. Alternatively, with the unordered option, users can provide these inputs in any order they prefer.
 
-## ✨ How to use ✨
+In broader terms, it grants permissions to users to modify any function affecting a state you manage on the blockchain. Essentially, it provides a platform for agreements similar to third-party function calls or consensus-driven functions involving multiple participants.
+
+Combined  with other contracts under development, like **CallOrderControl** and **InteractionControl**, (or just on its own) **InputControl** has the potential to serve as a cornerstone for public infrastructure. This foundational approach can speed up the development process for projects that necessitate the  InputControl's features, as highlighted in the **"🙀 Problems Addressed 🙀"** section.
+
+---
+
+<a name="a-problem-that-solves"></a>
+
+## 🙀 Problems Addressed 🙀
+
+InputControl tackles a variety of challenges. While the list below encompasses several, there might be more use-cases awaiting discovery. Moreover, efforts are underway on **CallOrderControl** and **InteractionControl**—potentially revolutionary for orchestrating intricate contract interactions involving multiple parties. However, the focus has predominantly been on InputControl for now because I couldn't thinkg of real use-cases for the other Control contracts. Explore these concepts here:
+
+- [CallOrderControl Repository](https://github.com/CarlosAlegreUr/CallOrderControl-SmartContract-DesignPattern/tree/main)
+- [InteractionControl Repository](https://github.com/CarlosAlegreUr/InteractionControl-SmartContract)
+
+**1. Decentralized Matchmaking**:
+Imagine a decentralized gaming platform where players bet and compete. Ensuring both parties initialize the match and secure funds can be challenging. InputControl can navigate the intricacies of any game logic agreement.
+
+**2. Decentralized NFT Upgrades**:
+Consider an NFT collection that needs a token URI update. Having the "updateURI()" function exclusively callable by you could strain trust with your client. But with InputControl, you can externalize the function, allowing the client to call it with a known, correct token URI—ensuring transparency without compromising integrity. Imagine a NFT game implmenets upgrades but doesnt want the backend to handle them in a centralized manner and lets the user do it but without any user making their nft overpowered faking a better upgrade.
+
+---
+
+<a name="how-to-use"></a>
+
+## ✨ Usage Guidelines ✨
+
+InputControl's flexibility comes in various implementations tailored to specific use-cases:
+
+- **InputControl by Inheritance (ICI)**: Suitable for single contracts.
+- **InputControl by Composition (ICC)**: Ideal for private systems, encompassing multiple contracts. It's especially handy when a single contract's code size precludes the use of the inheritance version.
+
+- **InputControl by Public (ICP)**: A universal contract available for public use. With plans to deploy across numerous EVM-compatible blockchains, it offers input control management for any interested contract.
+
+### How to use IC from your contracts 🧑‍🔧
+
+<details>  <summary>  ICI </summary>
 
 1. To use InputControl make your contract inherit InputControl and add the isAllowedInput()
    modifier in the functions you desire to control their inputs. The '\_input' parameter of the
@@ -73,15 +98,13 @@ Example: You want your client only to call a function 3 times, first time with i
 3. If inheriting the contract makes your code too long to deploy use the modular implementation, check how to use
    here => [InputControlModular](https://github.com/CarlosAlegreUr/InputControl-SmartContract-DesignPattern/tree/main/modularVersion)
 
+</details>
+<details>  <summary>  ICC </summary> </details>
+<details>  <summary>  ICP </summary> </details>
+
 <hr/>
 
-## 📰 Last Changes 📰
-
-- Added new modular/interface implementation. In some codes inheriting InputControl could make the contract too big to be deployed. Inheriting implementation still available in the package though :D.
-
-- Fixed bug, inputToTimesToUse mapping now is overwritten correctly. In previous version it could overflow and/or lead to unexpected behaviours.
-
-- New tests in tests' repository.
+<a name="future-improvements"></a>
 
 ## 🎉 FUTURE IMPROVEMENTS 🎉
 
@@ -94,13 +117,25 @@ Example: You want your client only to call a function 3 times, first time with i
 
 <hr/>
 
-<a name="realcase"></a>
+<a name="contributing"></a>
+
+## Contributing 💻
+
+Im learning how to use PRs, feel free to open issues or PRs.
+And, if independent further development, please mention me in your work 😄
+😉 https://github.com/CarlosAlegreUr 😉
+
+<hr/>
+
+<a name="contact"></a>
 
 ## 📨 Contact 📨
 
 Carlos Alegre Urquizú - calegreu@gmail.com
 
 <hr/>
+
+<a name="buy-me-a-crytocoffee"></a>
 
 ## ☕ Buy me a CryptoCoffee ☕
 
@@ -110,6 +145,8 @@ Buy me a crypto coffe in ETH, MATIC or BNB ☕🧐☕
 0x2365bf29236757bcfD141Fdb5C9318183716d866
 
 <hr/>
+
+<a name="license"></a>
 
 ## 📜 License 📜
 
