@@ -54,8 +54,7 @@ InputControl addresses several challenges. While the list below mentions 2 of th
 - [**InteractionControl Repo**](https://github.com/CarlosAlegreUr/InteractionControl-SmartContract)
 
 1. **Decentralized Matchmaking**:
-   Imagine a decentralized gaming platform where players wager and compete. Guaranteeing both parties initiate the match and secure funds can be intricate. InputControl can manage the complexities of any game logic agreement. You can inspect a straightforward UseCase implementation in the testing repo.
-   [UseCaseContractPublic.sol](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing/blob/main/contracts/public/UseCaseContractPublic.sol)
+   Imagine a decentralized gaming platform where players wager and compete. Guaranteeing both parties initiate the match and secure funds can be intricate. InputControl can manage the complexities of any game logic agreement.
 
 2. **Decentralized NFT Upgrades**:
    Envision an NFT collection requiring a token URI update. Exclusively allowing the _`updateURI()`_ function to be callable by you might strain trust with your client. With InputControl, you can externalize the function, letting the client call it with a known, correct token URI—promoting transparency without sacrificing integrity. Imagine a NFT game implements upgrades but doesn't want the backend to handle them in a centralized way. It enables the user to do it without any user making their NFT overpowered by faking a superior upgrade. The InputControl contract would make that possible.
