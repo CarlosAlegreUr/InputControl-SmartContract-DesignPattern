@@ -7,10 +7,9 @@ pragma solidity ^0.8.18;
  * @notice This interface defines a system for controlling the sequence and set of inputs
  * addresses can send to a contract's functions. It allows total control on function calls input values.
  *
- * @dev For an interface implementation, refer to the contract InputControlComposite.sol:
- * (TODO: add link)
+ * @dev For an interface implementation, refer to the contract at InputControlComposite.sol in this same directory.
  * @dev For an implementation example, refer to the contract UseCaseContractModular.sol:
- * (TODO: add link)
+ * [link](https://github.com/CarlosAlegreUr/InputControl-SmartContract-Testing/blob/main/contracts/owned/compositeVersion/UseCaseContractComposite.sol)
  */
 interface IInputControlComposite {
     /* Customed Errors */
@@ -93,6 +92,6 @@ interface IInputControlComposite {
 
     /// @param _newAdmin The address to apply the change.
     /// @param _newIsAdmin Wheter to make admin or not. If true, `_newAdmin` will becom admin, if false
-    /// it won't or will be revoked from its admin role. 
+    /// it won't or will be revoked from its admin role.
     function setAdmin(address _newAdmin, bool _newIsAdmin) external;
 }
